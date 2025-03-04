@@ -46,7 +46,7 @@ for line in file:
         error_code = ydl.download(video_url)
 
     # this is just how ydl titles the downloaded mp3s
-    file_path = f"{video_title} [{video_id}].mp3"
+    file_path = f"[{video_id}].mp3"
 
 
 
