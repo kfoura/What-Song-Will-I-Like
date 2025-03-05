@@ -23,3 +23,4 @@ for i, mfcc in enumerate(mfcc_list):
     dtw_distance = fastdtw(mfcc, total_mfcc, dist=euclidean)[0]
     distance.append(dtw_distance)
         
+new_file = "./dataset/new_mfcc.npy"
