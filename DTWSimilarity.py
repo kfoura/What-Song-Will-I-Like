@@ -24,3 +24,11 @@ for i, mfcc in enumerate(mfcc_list):
     distance.append(dtw_distance)
         
 new_file = "./dataset/new_mfcc.npy"
+new_mfcc = np.load(new_file)
+new_mfcc_mean = np.mean(new_mfcc, axis = 1)
+new_distance = fastdtw(new_mfcc, total_mfcc, dist=euclidean)[0]
+
+distance_mean = np.mean(distance, axis=0)
+
+if (new_distance <= distance_mean):
+    print("This song is sufficiently similar to the playlist.")
