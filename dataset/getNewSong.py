@@ -28,3 +28,18 @@ ydl_opts = {
         'preferredcodec': 'mp3',
     }]
 }
+
+with yt_dlp.YoutubeDL(ydl_opts) as ydl:
+    error_code = ydl.download(video_url)
+
+file_path = f"[{video_id}].mp3"
+
+audio_data, sr = librosa.load(file_path, sr=None)
+
+mfcc = librosa.feature.mfcc(y=audio_data, sr=sr)
+mfccNormalized = (mfcc - np.mean(mfcc)) / np.std(mfcc)
+
+np.save(f"./dataset/new_mfcc.npy")
+os.remove(file_path)
+
+print("Success!")
